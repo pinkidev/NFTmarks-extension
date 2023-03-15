@@ -1,25 +1,29 @@
-import type { Component } from 'solid-js';
+import type { Component } from "solid-js";
+import styles from "./App.module.css";
+import Footer from "./components/organisms/footer";
+import Header from "./components/organisms/header";
+import { BookmarkList } from "./components/organisms/bookmark-list";
 
-import logo from './logo.svg';
-import styles from './App.module.css';
 
+let bookmarks = [
+  {name: "React", url: "https://react.com"},
+  {name: "Preact", url: "https://preact.com"},
+  {name: "React", url: "https://react.com"},
+  {name: "Preact", url: "https://preact.com"},
+  {name: "React", url: "https://react.com"},
+
+
+]
 const App: Component = () => {
   return (
-    <div class={styles.App}>
-      <header class={styles.header}>
-        <img src={logo} class={styles.logo} alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          class={styles.link}
-          href="https://github.com/solidjs/solid"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn Solid
-        </a>
-      </header>
+    <div class="flex w-full h-screen justify-center">
+      <div class="bg-neutral-700 h-screen relative" style={{width:"400px"}}>
+        <Header />
+        <BookmarkList bookmarks={bookmarks} />
+        <div class="fixed bottom-0" style={{width: "inherit"}}>
+          <Footer />
+        </div>
+      </div>
     </div>
   );
 };
