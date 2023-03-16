@@ -10,7 +10,7 @@ const Home: Component = () => {
     { name: "React", url: "https://react.com" },
   ];
   return (
-    <div>
+    <div class="px-6 pb-4">
       <BookmarkList bookmarks={bookmarks} />
     </div>
   );

@@ -17,7 +17,7 @@ const App: Component = () => {
           <Header />
             <Routes>
               <Route path="/" component={Home}></Route>
-              <Route path="/settings" component={Settings}></Route>
+              <Route path="/account" component={Settings}></Route>
             </Routes>
           <div class="fixed bottom-0" style={{ width: "inherit" }}>
             <Footer />

@@ -4,7 +4,7 @@ import { BookmarkListProps } from "./types";
 import { Bookmark } from "../molecules/types";
 export const BookmarkList: Component<BookmarkListProps> = ({ bookmarks }) => {
   return (
-    <div class={`px-6 pb-4 ${bookmarks.length > 6 ? 'overflow-y-scroll' : '' } scroller-height`}>
+    <div class={`${bookmarks.length > 6 ? 'overflow-y-scroll' : '' } scroller-height`}>
       {bookmarks.map((bookmark: Bookmark) => {
         return <BookmarkRow {...bookmark} />;
       })}
