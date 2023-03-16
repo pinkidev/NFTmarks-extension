@@ -1,3 +1,5 @@
+import { Bookmark } from "../molecules/types";
+
 export interface BookmarkListProps {
-  bookmarks: any
+  bookmarks: Bookmark[]
 };

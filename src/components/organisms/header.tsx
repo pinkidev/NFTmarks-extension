@@ -1,6 +1,7 @@
 import { AiOutlinePlusCircle } from "solid-icons/ai";
-import { FaSolidUserAstronaut, FaSolidSliders } from 'solid-icons/fa'
+import { FaSolidUserAstronaut, FaSolidSliders } from "solid-icons/fa";
 import { TbCurrencyDollar } from "solid-icons/tb";
+import { A } from "@solidjs/router";
 
 interface IHeaderProps {}
 
@@ -11,7 +12,9 @@ const Header = () => {
         <TbCurrencyDollar size="28" color="white" />
       </div>
       <div class="cursor-pointer">
-        <FaSolidUserAstronaut size="25" color="white" />
+        <A href="/settings">
+          <FaSolidUserAstronaut size="25" color="white" />
+        </A>
       </div>
     </div>
   );

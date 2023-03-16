@@ -6,7 +6,7 @@ export const BookmarkList: Component<BookmarkListProps> = ({ bookmarks }) => {
   return (
     <div class={`px-6 pb-4 ${bookmarks.length > 6 ? 'overflow-y-scroll' : '' } scroller-height`}>
       {bookmarks.map((bookmark: Bookmark) => {
-        return <BookmarkRow bookmark={bookmark} />;
+        return <BookmarkRow {...bookmark} />;
       })}
     </div>
   );
