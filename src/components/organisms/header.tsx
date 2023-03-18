@@ -9,10 +9,12 @@ interface IHeaderProps {}
 const Header = () => {
   const location = useLocation()
 
+  // able to listen to url changes
   createEffect(on(
     () => location.pathname,
     () => {}
   ));
+
 
   return (
     <div class="flex justify-between p-4 items-center">
