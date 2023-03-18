@@ -1,11 +1,25 @@
 import { createSignal } from "solid-js";
+import { useSelector } from "../../store";
+import config from "../../../app.config";
 
-const useSwitches = () => {
-  const [theme, setTheme] = createSignal(true);
+const useSettings = () => {
+  const { app } = useSelector();
+  const appState = () => app.state;
+  const theme = () => app.state.theme;
+  const setTheme = app.setTheme;
+  const darkSecondary = () => config.themes.twDark.secondary;
+  const lightSecondary = () => config.themes.twLight.secondary;
+  const darkText = () => config.themes.twDark.text;
+  const lightText = () => config.themes.twLight.text;
   return {
+    appState,
     theme,
-    setTheme
-  }
-}
+    setTheme,
+    darkSecondary,
+    lightSecondary,
+    darkText,
+    lightText,
+  };
+};
 
-export default useSwitches;
+export default useSettings;

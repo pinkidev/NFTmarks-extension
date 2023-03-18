@@ -2,7 +2,7 @@ import { Component, createSignal, Setter } from "solid-js";
 
 export interface TogglerValue {
   enabled: boolean
-  switch: Setter<boolean>
+  switch: (theme: boolean) => void
   height?: number
 }
 
@@ -13,7 +13,8 @@ const Toggler: Component<TogglerValue> = (props) => {
 
   const [toggle, moveToggle] = createSignal(true);
   const enable = () => {
-    props.switch(toggle() ? false : true);
+    const theme = toggle() ? false : true
+    props.switch(theme);
     moveToggle(toggle() ? false : true);
   }
 

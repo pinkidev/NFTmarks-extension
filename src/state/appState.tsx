@@ -1,15 +1,27 @@
 import { createStore } from "solid-js/store";
 
-
-const [appState, setAppState] = createStore({
-  theme: true
-});   
+let theme: boolean = true;
+if('theme' in localStorage) {
+  let savedTheme = localStorage.getItem('theme');
+  theme = savedTheme === 'dark' ? true : false
+}
+const [state, setState] = createStore({
+  theme,
+});
 
 export const useAppState = () => {
   const setTheme = (theme: boolean) => {
-    setAppState('theme', theme)
-  }
+    setState(() => {
+      if(theme) {
+        document.documentElement.classList.add('dark')
+      } else {
+        document.documentElement.classList.remove('dark')
 
-  return {appState, setTheme};
-}
+      }
+      localStorage.setItem('theme', theme ? 'dark' : 'light');
+      return {...state, theme}
+    })
+  };
 
+  return { state, setTheme };
+};

@@ -14,7 +14,6 @@ const Home: Component = () => {
   ];
   return (
     <div class="px-6 pb-4">
-      {app.appState.theme ? 'dark' : 'light'}
       <BookmarkList bookmarks={bookmarks} />
     </div>
   );

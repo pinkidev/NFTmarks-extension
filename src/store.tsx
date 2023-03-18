@@ -1,6 +1,7 @@
 import { createContext, ParentComponent, useContext } from "solid-js";
 import {  useAppState } from "./state/appState";
 
+
 const rootState = {
   app: useAppState(),
 };
