@@ -7,8 +7,8 @@ interface IFooterProps {}
 const Footer = () => {
   return (
     <div class="flex justify-center w-full p-4 items-center">
-      <div class="cursor-pointer">
-        <AiOutlinePlusCircle size="28" color="white" />
+      <div class="cursor-pointer text-textLight dark:text-textDark">
+        <AiOutlinePlusCircle size="28" />
       </div>
     </div>
   );

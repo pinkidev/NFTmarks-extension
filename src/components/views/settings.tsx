@@ -1,6 +1,5 @@
 import { Component, createEffect } from "solid-js";
 import Toggler from "../atoms/toggler";
-import useTheme from "../../use/useTheme/useTheme";
 import {
   FaSolidNetworkWired,
   FaRegularMoon,
@@ -8,13 +7,12 @@ import {
   FaSolidChevronRight,
 } from "solid-icons/fa";
 import {} from "solid-icons/fa";
+import useTheme from "../../use/useTheme/useTheme";
 
 const Settings: Component<{}> = (props) => {
-  const { theme, setTheme, darkSecondary, lightSecondary, darkText, lightText } = useTheme();  
-
-  console.log(darkSecondary())
+  const {theme, setTheme} = useTheme();
   return (
-    <div class={`${lightText()} dark:${darkText()} px-6 pb-4 pt-2 transition-colors`}>
+    <div class={`text-textLight dark:text-textDark px-6 pb-4 pt-2 transition-colors`}>
       <div class={`p-2 mt-2 flex justify-between w-full items-center rounded-md`}>
         <div class="flex">
           {theme() ? <FaRegularMoon size={25} /> : <FaSolidSun size={25} />}

@@ -6,6 +6,7 @@ import Settings from "./components/views/settings";
 import Home from "./components/views/home";
 import { Router, Route, Routes } from "@solidjs/router";
 import { StoreProvider } from "./store";
+import useTheme from "./use/useTheme/useTheme";
 
 const App: Component = () => {
   return (
@@ -13,7 +14,7 @@ const App: Component = () => {
       <Router>
         <div class="flex w-full h-screen justify-center">
           <div
-            class="bg-neutral-700 h-screen relative"
+            class="bg-primaryLight dark:bg-primaryDark transition-colors h-screen relative"
             style={{ width: "400px" }}
           >
             <Header />
