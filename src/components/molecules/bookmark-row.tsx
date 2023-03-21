@@ -8,10 +8,10 @@ export const BookmarkRow: Component<Bookmark> = ({ name, url }) => {
   const [dropdown, setDropdown] = createSignal(false);
 
   return (
-    <div class="py-2 mt-2 px-2 border-solid border-2 border-sky-200 rounded-md">
+    <div class="py-2 mt-2 px-2 border-solid border-2 border-text-textLight dark:border-textDark text-textLight dark:text-textDark rounded-md">
       <div class="flex justify-between items-center">
-        <div class="text-sky-200">{name}</div>
-        <div class=" text-sky-200 flex items-center">
+        <div>{name}</div>
+        <div class="flex items-center">
           <a href={url} target="_blank">
             <BiRegularLinkExternal size={20} class="mr-4 cursor-pointer" />
           </a>
@@ -27,7 +27,7 @@ export const BookmarkRow: Component<Bookmark> = ({ name, url }) => {
           />
         </div>
       </div>
-      {dropdown() ? <div class="dropdown text-white">{url}</div> : false}
+      {dropdown() ? <div class="dropdown">{url}</div> : false}
     </div>
   );
 };

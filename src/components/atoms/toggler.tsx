@@ -19,7 +19,6 @@ const Toggler: Component<TogglerValue> = (props) => {
     moveToggle(toggle() ? false : true);
   }
 
-  console.log(theme(), toggle())
   return (
     <div style={{ width: width + 'px', padding: '4px' }} onClick={enable} 
       class={`cursor-pointer toggle-body rounded-full border-2 border-textLight border-solid dark:border-textDark flex transition-all duration-500 `}>
