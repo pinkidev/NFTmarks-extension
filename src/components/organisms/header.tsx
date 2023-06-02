@@ -1,6 +1,7 @@
 import { RiMapSpaceShipLine } from "solid-icons/ri";
 import { FaSolidUserAstronaut, FaSolidSliders } from "solid-icons/fa";
 import { TbCurrencyDollar } from "solid-icons/tb";
+import { IoChevronBack } from 'solid-icons/io'
 import { A, useLocation } from "@solidjs/router";
 import { createEffect, createSignal, on } from "solid-js";
 import useTheme from "../../use/useTheme/useTheme";
@@ -24,11 +25,16 @@ const Header = () => {
         <TbCurrencyDollar size="28" />
       </div>
       <div class="cursor-pointer">
-        {location.pathname === "/" ? (
+        {location.pathname.includes('/account/') ?
+            <A href="/account">
+            <IoChevronBack size="25"  />
+          </A>
+         : location.pathname === "/" ? (
           <A href="/account">
             <FaSolidUserAstronaut size="25"  />
           </A>
-        ) : (
+        ) : 
+        (
           <A href="/">
             <RiMapSpaceShipLine size="25"  />
           </A>

@@ -1,14 +1,16 @@
 import { FaSolidSliders } from "solid-icons/fa";
 import { AiOutlinePlusCircle } from "solid-icons/ai";
 import { TbCurrencyDollar } from "solid-icons/tb";
-
-interface IFooterProps {}
+import { A } from "@solidjs/router";
+interface IFooterProps { }
 
 const Footer = () => {
   return (
-    <div class="flex justify-center w-full p-4 items-center">
+    <div class="flex justify-center w-full p-4 items-center dark:bg-primaryDark bg-primaryLight">
       <div class="cursor-pointer text-textLight dark:text-textDark">
-        <AiOutlinePlusCircle size="28" />
+        <A href="/add-nft-mark">
+          <AiOutlinePlusCircle size="28" />
+        </A>
       </div>
     </div>
   );

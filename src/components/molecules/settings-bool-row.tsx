@@ -11,7 +11,7 @@ interface SettingsBoolRowProps {
 
 const SettingsBoolRow: Component<SettingsBoolRowProps> = ({ title, value, setter, IconTrue, IconFalse }) => {
   return (
-    <div class={`p-2 mt-2 flex justify-between w-full items-center rounded-md hover:dark:bg-secondaryDark hover:bg-secondaryLight`}>
+    <div class={`p-2 mt-2 flex font-bold justify-between w-full items-center rounded-md hover:dark:bg-secondaryDark hover:bg-secondaryLight`}>
       <div class="flex">
         {value() ? <IconTrue size={25} /> : <IconFalse size={25} />}
         <div class={`text-xl ml-3`}>{title}</div>

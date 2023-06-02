@@ -8,7 +8,7 @@ export const BookmarkRow: Component<Bookmark> = ({ name, url }) => {
   const [dropdown, setDropdown] = createSignal(false);
 
   return (
-    <div class="py-2 mt-2 px-2 border-solid border-2 border-text-textLight dark:border-textDark text-textLight dark:text-textDark rounded-md">
+    <div class="py-2 mt-2 px-2 font-bold border-solid border-2 border-textLight dark:border-textDark text-textLight dark:text-textDark rounded-md">
       <div class="flex justify-between items-center">
         <div>{name}</div>
         <div class="flex items-center">
