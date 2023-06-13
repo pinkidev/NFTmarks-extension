@@ -1,5 +1,4 @@
 import { Component } from "solid-js";
-import useTheme from "../../../use/useTheme/useTheme";
 import SettingsRow from "../../molecules/settings-row";
 
 interface NetworksProps {
@@ -7,7 +6,6 @@ interface NetworksProps {
 }
 
 const Networks: Component<NetworksProps> = ({ }) => {
-  const {theme, setTheme} = useTheme();
   const networks = ['Ethereum', 'Fantom'];
   const networksMap = networks.map(network => {
     return <SettingsRow name={network} />

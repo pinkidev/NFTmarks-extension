@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
-import solidPlugin from "vite-plugin-solid";
+import solid from "vite-plugin-solid";
 import devtools from "solid-devtools/vite";
 
 export default defineConfig({
@@ -8,7 +8,7 @@ export default defineConfig({
       /* additional options */
       autoname: true, // e.g. enable autoname
     }),
-    solidPlugin(),
+    solid(),
   ],
   server: {
     port: 3000,

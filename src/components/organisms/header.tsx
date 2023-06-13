@@ -31,7 +31,7 @@ const Header = () => {
           </A>
          : location.pathname === "/" ? (
           <A href="/account">
-            <FaSolidUserAstronaut size="25"  />
+            <FaSolidUserAstronaut size="25" class="fill-textLight dark:fill-textDark"/>
           </A>
         ) : 
         (

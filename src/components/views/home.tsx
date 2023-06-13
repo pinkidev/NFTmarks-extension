@@ -1,29 +1,17 @@
-import { Component, createSignal } from "solid-js";
+import { Component, createEffect, createSignal } from "solid-js";
 import { BookmarkList } from "../organisms/bookmark-list";
 import Select from "../molecules/select";
 import { useSelector } from "../../store";
+import useContent from "../../use/useContent/useContent";
 
 const Home: Component = () => {
-  const { app } = useSelector();
+  const {nftMarks} = useContent()
   const [category, setCategory] = createSignal('Category');
 
-  let bookmarks = [
-    { name: "React", url: "https://react.com" },
-    { name: "Preact", url: "https://preact.com" },
-    { name: "React", url: "https://react.com" },
-    { name: "Preact", url: "https://preact.com" },
-    { name: "React", url: "https://react.com" },
-    { name: "React", url: "https://react.com" },
-    { name: "Preact", url: "https://preact.com" },
-    { name: "React", url: "https://react.com" },
-    { name: "Preact", url: "https://preact.com" },
-    { name: "React", url: "https://react.com" },
-    { name: "React", url: "https://react.com" },
-    { name: "Preact", url: "https://preact.com" },
-    { name: "React", url: "https://react.com" },
-    { name: "Preact", url: "https://preact.com" },
-    { name: "React", url: "https://react.com" },
-  ];
+  createEffect(() => {
+    nftMarks()
+  })
+  let bookmarks = nftMarks()
   return (
     <div class="px-6">
       <Select value={category} setValue={setCategory} name="Category" options={['Default']} />

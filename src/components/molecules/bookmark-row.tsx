@@ -1,7 +1,7 @@
 import { Component, createSignal } from "solid-js";
-import { AiFillCopy } from "solid-icons/ai";
-import { BiRegularLinkExternal } from "solid-icons/bi";
-import { RiSystemArrowDropDownFill } from "solid-icons/ri";
+import { BsClipboard2CheckFill } from 'solid-icons/bs'
+import { FiLink2 } from 'solid-icons/fi'
+import { RiArrowsArrowDropDownFill } from 'solid-icons/ri'
 import { Bookmark } from "./types";
 
 export const BookmarkRow: Component<Bookmark> = ({ name, url }) => {
@@ -13,14 +13,14 @@ export const BookmarkRow: Component<Bookmark> = ({ name, url }) => {
         <div>{name}</div>
         <div class="flex items-center">
           <a href={url} target="_blank">
-            <BiRegularLinkExternal size={20} class="mr-4 cursor-pointer" />
+            <FiLink2  size={20} class="mr-4 cursor-pointer" />
           </a>
-          <AiFillCopy
-            size={20}
+          <BsClipboard2CheckFill
+            size={16}
             onClick={() => navigator.clipboard.writeText(url)}
             class="mr-2 cursor-pointer"
           />
-          <RiSystemArrowDropDownFill
+          <RiArrowsArrowDropDownFill
             onClick={() => setDropdown(dropdown() ? false : true)}
             size={30}
             class="cursor-pointer"
