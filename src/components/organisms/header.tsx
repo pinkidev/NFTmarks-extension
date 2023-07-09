@@ -3,14 +3,12 @@ import { FaSolidUserAstronaut, FaSolidSliders } from "solid-icons/fa";
 import { TbCurrencyDollar } from "solid-icons/tb";
 import { IoChevronBack } from 'solid-icons/io'
 import { A, useLocation } from "@solidjs/router";
-import { createEffect, createSignal, on } from "solid-js";
-import useTheme from "../../use/useTheme/useTheme";
+import { createEffect, on } from "solid-js";
 
 interface IHeaderProps {}
 
 const Header = () => {
   const location = useLocation()
-  const {theme} = useTheme();
 
   // able to listen to url changes
   createEffect(on(
