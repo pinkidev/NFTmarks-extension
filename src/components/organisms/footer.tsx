@@ -2,6 +2,7 @@ import { FaSolidSliders } from "solid-icons/fa";
 import { AiOutlinePlusCircle } from "solid-icons/ai";
 import { TbCurrencyDollar } from "solid-icons/tb";
 import { A } from "@solidjs/router";
+
 interface IFooterProps { }
 
 const Footer = () => {

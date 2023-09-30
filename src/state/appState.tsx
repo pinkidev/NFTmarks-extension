@@ -1,6 +1,7 @@
 import { createStore } from "solid-js/store";
 import { Bookmark } from '../components/molecules/types'
 let theme: boolean = true;
+
 if ("theme" in localStorage) {
   let savedTheme = localStorage.getItem("theme");
   theme = savedTheme === "dark" ? true : false;
@@ -10,6 +11,7 @@ if ("theme" in localStorage) {
     document.documentElement.classList.remove("dark");
   }
 }
+
 let nftMarks: Bookmark[] = [];
 
 const [state, setState] = createStore({

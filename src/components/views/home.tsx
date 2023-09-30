@@ -1,6 +1,6 @@
 import { Component, createEffect, createSignal, Show } from "solid-js";
 import { BookmarkList } from "../organisms/bookmark-list";
-import Select from "../molecules/select";
+import Select from "../atoms/select";
 import { useSelector } from "../../store";
 import useContent from "../../use/useContent/useContent";
 import Login from "./login";
