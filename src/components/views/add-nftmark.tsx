@@ -5,16 +5,15 @@ import Input from '../atoms/input';
 import useContent from "../../use/useContent/useContent";
 
 const AddNftMark: Component<{}> = () => {
-  let categories = ['Default', 'Kinky'];
-  let navigate = useNavigate();
-  let { setMarks, nftMarks } = useContent();
-  let [name, setName] = createSignal('');
-  let [nftMark, setNftMark] = createSignal('');
-
+  const categories = ['Default', 'Kinky'];
+  const navigate = useNavigate();
+  const { setMarks, nftMarks } = useContent();
+  const [name, setName] = createSignal('');
+  const [nftMark, setNftMark] = createSignal('');
   const [category, setCategory] = createSignal('Category');
 
   const createNftMark = () => {
-    setMarks([{ name: name(), url: nftMark(), id: '0' }, ...nftMarks()]);
+    setMarks([{ name: name(), url: nftMark(), id: '0', category: category() }, ...nftMarks()]);
     navigate('/')
   }
 

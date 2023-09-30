@@ -2,5 +2,6 @@
 export interface Bookmark {
   name: string
   url: string
-  id?: string
+  id?: string,
+  category: string
 }

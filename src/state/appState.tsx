@@ -1,5 +1,6 @@
 import { createStore } from "solid-js/store";
 import { Bookmark } from '../components/molecules/types'
+
 let theme: boolean = true;
 
 if ("theme" in localStorage) {
@@ -13,10 +14,12 @@ if ("theme" in localStorage) {
 }
 
 let nftMarks: Bookmark[] = [];
+let category: string = 'Default';
 
 const [state, setState] = createStore({
   theme,
-  nftMarks
+  nftMarks,
+  category
 });
 
 export const useAppState = () => {
@@ -31,12 +34,18 @@ export const useAppState = () => {
       return { ...state, theme };
     });
   };
-  
+
   const setMarks = (nftMarks: Bookmark[]) => {
     setState(() => {
       return { ...state, nftMarks }
     })
   }
 
-  return { state, setTheme, setMarks };
+  const setCategory = (category: string) => {
+    setState(() => {
+      return { ...state, category }
+    })
+  }
+
+  return { state, setTheme, setMarks, setCategory };
 };
