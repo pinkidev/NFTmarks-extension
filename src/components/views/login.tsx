@@ -37,7 +37,7 @@ const Login: Component<LoginProps> = ({ connected, setConnected }) => {
   return (
     <div class="px-6">
       {error().length > 0 ? <div class=" bg-red-500 p-4">{error()}</div> : false}
-      <button onClick={connect} class="px-4 py-2 dark:border-textDark dark:text-textDark text-textLight dark:bg-cyan-700 bg-violet-200 p-2 mt-6
+      <button onClick={connect} class="px-4 py-2 dark:border-textDark dark:text-textDark text-textLight dark:bg-primaryButtonDark bg-primaryButtonLight p-2 mt-6
         font-bold w-full items-center rounded-md text-center hover:dark:bg-cyan-800 hover:bg-violet-300">Connect</button>
     </div>
   );

@@ -12,7 +12,11 @@ module.exports = {
         textDark: 'white',
         primaryLight: '#FEF3C7',
         secondaryLight: '#FDE68A',
-        textLight: '#404040'
+        textLight: '#404040',
+        primaryButtonLight: 'rgb(221 214 254)',
+        secondaryButtonLight: 'rgb(196 181 253)',
+        secondaryButtonDark: 'rgb(79 70 229)',
+        primaryButtonDark: 'rgb(99 102 241)',
         // ...
       }
     },

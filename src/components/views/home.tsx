@@ -6,7 +6,7 @@ import useContent from "../../use/useContent/useContent";
 import Login from "./login";
 
 const Home: Component = () => {
-  const categories = ['Default', 'Kinky']
+  const categories = [{label: 'Kinky', value: 'kinky'}, {label: 'Default', value: 'default'}];
   const { nftMarks, setCategory, category } = useContent()
   const [connected, setConnected] = createSignal(false);
 
@@ -17,7 +17,7 @@ const Home: Component = () => {
   let bookmarks = nftMarks()
   return (
     <Show when={connected()} fallback={<Login connected={connected} setConnected={setConnected}/>}>
-      <div class="px-6">
+      <div class="px-6 relative">
         <Select value={category} setValue={setCategory} name="Category" options={categories} />
         <div class="mt-2">
           <BookmarkList bookmarks={bookmarks} />

@@ -5,7 +5,7 @@ import Input from '../atoms/input';
 import useContent from "../../use/useContent/useContent";
 
 const AddNftMark: Component<{}> = () => {
-  const categories = ['Default', 'Kinky'];
+  const categories = [{label: 'Kinky', value: 'kinky'}, {label: 'Default', value: 'default'}];
   const navigate = useNavigate();
   const { setMarks, nftMarks } = useContent();
   const [name, setName] = createSignal('');
@@ -28,8 +28,8 @@ const AddNftMark: Component<{}> = () => {
       </div>
       <div class="mt-4">
         <button id="nft-mark" class={`dark:border-textDark 
-    dark:bg-cyan-700 bg-violet-200 p-2 mt-2 font-bold w-full items-center rounded-md text-center 
-    hover:dark:bg-secondaryDark hover:bg-violet-300`} name="NFTmarkName" onClick={createNftMark}>Save</button>
+    dark:bg-primaryButtonDark bg-primaryButtonLight p-2 mt-2 font-bold w-full items-center rounded-md text-center 
+    hover:dark:bg-secondaryButtonDark hover:bg-secondaryButtonLight`} name="NFTmarkName" onClick={createNftMark}>Save</button>
       </div>
     </div>);
 };
