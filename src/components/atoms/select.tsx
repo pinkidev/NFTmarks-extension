@@ -25,11 +25,11 @@ const Select: Component<SelectProps> = ({ options, name, value, setValue }) => {
 
   let ChoiceElement = (value: string, label: string) => {
     return <div onClick={() => makeChoice(value)}
-      class="hover:bg-primaryLight dark:hover:bg-primaryDark cursor-pointer rounded-md dark:border-textDark text-textLight dark:text-textDark border-2 px-2 py-1 mt-2 w-full">{label}</div>
+      class="hover:bg-primaryLight dark:hover:bg-primaryDark cursor-pointer rounded-md dark:border-textDark text-textLight dark:text-textDark border-textLight border-2 px-2 py-1 mt-2 w-full">{label}</div>
   }
 
   let choicesMap =
-    <div class="absolute flex-col h-4/5 overflow-auto w-10/12 px-3 ml-2 pb-3 mt-2 rounded-md dark:bg-secondaryDark bg-secondary-Light border-textLight dark:border-textDark text-textLight dark:text-textDark border-2">
+    <div class="absolute flex-col h-4/5 overflow-auto w-10/12 px-3 ml-2 pb-3 mt-2 rounded-md dark:bg-secondaryDark bg-secondaryLight border-textLight dark:border-textDark text-textLight dark:text-textDark border-2">
       {options.map((choice) => {
         return ChoiceElement(choice.value, choice.label)
       })}
