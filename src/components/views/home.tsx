@@ -5,13 +5,15 @@ import { useSelector } from "../../store";
 import useContent from "../../use/useContent/useContent";
 import Login from "./login";
 import { ethers } from 'ethers';
+import useSettings from "../../use/useSettings/useSettings";
 
 
 const provider = new ethers.BrowserProvider((window as any).ethereum);
 
 const Home: Component = () => {
   const categories = [{ label: 'Kinky', value: 'kinky' }, { label: 'Default', value: 'default' }];
-  const { nftMarks, setCategory, category, setConnected, connected } = useContent()
+  const { nftMarks, setCategory, category, } = useContent()
+  const { setConnected, connected } = useSettings()
 
 
   const isConnected = async () => {
