@@ -3,8 +3,8 @@ import {ethers} from 'ethers';
 const provider = new ethers.BrowserProvider((window as any).ethereum);
 
 interface LoginProps {
-  connected: Accessor<any>
-  setConnected: Setter<Boolean>
+  connected: () => boolean
+  setConnected: (connected: boolean) => void
 }
 
 const Login: Component<LoginProps> = ({ connected, setConnected }) => {
@@ -21,24 +21,11 @@ const Login: Component<LoginProps> = ({ connected, setConnected }) => {
     }
   }
 
-  const isConnected = async () => {
-    const accounts = await provider.send('eth_accounts', []);
-    if(accounts.length) {
-      setConnected(true)
-    } else {
-      setConnected(false);
-    }
-  }
-
-  onMount(() => {
-    isConnected();
-  })
-
   return (
     <div class="px-6">
       {error().length > 0 ? <div class=" bg-red-500 p-4">{error()}</div> : false}
       <button onClick={connect} class="px-4 py-2 dark:border-textDark dark:text-textDark text-textLight dark:bg-primaryButtonDark bg-primaryButtonLight p-2 mt-6
-        font-bold w-full items-center rounded-md text-center hover:dark:bg-cyan-800 hover:bg-violet-300">Connect</button>
+        font-bold w-full items-center rounded-md text-center hover:dark:bg-secondaryButtonDark hover:bg-secondaryButtonLight">Connect</button>
     </div>
   );
 };

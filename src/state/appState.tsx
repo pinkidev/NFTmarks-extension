@@ -13,13 +13,23 @@ if ("theme" in localStorage) {
   }
 }
 
+interface Blockchain {
+  connected: boolean
+  chain: string
+}
+
 let nftMarks: Bookmark[] = [];
 let category: string = 'Default';
+let blockchain: Blockchain = {
+  connected: false,
+  chain: 'ethereum'
+}
 
 const [state, setState] = createStore({
   theme,
   nftMarks,
-  category
+  category,
+  blockchain
 });
 
 export const useAppState = () => {
@@ -47,5 +57,21 @@ export const useAppState = () => {
     })
   }
 
-  return { state, setTheme, setMarks, setCategory };
+  const setConnected = (connected: boolean) => {
+    setState(() => {
+      return {
+        ...state, blockchain: {...state.blockchain, connected}
+      }
+    })
+  }
+
+  const setBlockchain = (chain: string) => {
+    setState(() => {
+      return {
+        ...state, blockchain: {...state.blockchain, chain }
+      }
+    })
+  }
+
+  return { state, setTheme, setMarks, setCategory, setConnected, setBlockchain };
 };
