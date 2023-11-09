@@ -6,6 +6,7 @@ const useContent = () => {
   const nftMarks = () => app.state.nftMarks;
   const category = () => app.state.category
   const setMarks = app.setMarks;
+  const addMark = app.addMark;
   const setCategory = app.setCategory
 
   return {
@@ -14,7 +15,7 @@ const useContent = () => {
     appState,
     nftMarks,
     setMarks,
-
+    addMark
   };
 };
 

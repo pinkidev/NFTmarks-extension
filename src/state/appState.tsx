@@ -1,6 +1,6 @@
 import { createStore } from "solid-js/store";
-import { Bookmark } from '../components/molecules/types'
-
+import { Bookmark } from '../components/molecules/types';
+import nftMarksApi from "../api/nftmarks";
 let theme: boolean = true;
 
 if ("theme" in localStorage) {
@@ -51,6 +51,18 @@ export const useAppState = () => {
     })
   }
 
+  const addMark = async (nftMark: Bookmark) => {
+    try {
+      const response = await nftMarksApi.addNftMark(nftMark);
+      console.log(response);
+    } catch(err) {
+
+    }
+    setState(() => {
+      return {...state, nftMarks: [nftMark, ...state.nftMarks]}
+    })
+  }
+
   const setCategory = (category: string) => {
     setState(() => {
       return { ...state, category }
@@ -73,5 +85,5 @@ export const useAppState = () => {
     })
   }
 
-  return { state, setTheme, setMarks, setCategory, setConnected, setBlockchain };
+  return { state, setTheme, setMarks, setCategory, setConnected, setBlockchain, addMark };
 };
