@@ -4,4 +4,5 @@ export interface Bookmark {
   url: string
   id?: string,
   category: string
+  userid: string
 }
