@@ -1,4 +1,4 @@
-import { Component, createEffect, createSignal, Show, onMount } from "solid-js";
+import { Component, createEffect, Show, onMount } from "solid-js";
 import { BookmarkList } from "../organisms/bookmark-list";
 import Select from "../atoms/select";
 import useContent from "../../use/useContent/useContent";
@@ -12,8 +12,9 @@ const provider = new ethers.BrowserProvider((window as any).ethereum);
 
 const Home: Component = () => {
   const categories = [{ label: 'Kinky', value: 'Kinky' }, { label: 'Default', value: 'Default' }];
-  const { nftMarks, setCategory, category, setMarks} = useContent()
-  const { setConnected, connected } = useSettings()
+  const props = useContent();
+  const { setConnected, connected } = useSettings();
+  const { category, setCategory } = useContent()
 
 
   const isConnected = async () => {
@@ -27,12 +28,14 @@ const Home: Component = () => {
   const getUserNftMarks = async () => {
     const marks = await nftmarksApi.getNftMarksByUser('652d5eb3d7e492b02c050f70');
     const parsedMarks = marks.map((mark:string) => JSON.parse(mark));
-    setMarks(parsedMarks)
+    props.setMarks(parsedMarks)
   }
 
   createEffect(() => { 
-    nftMarks()
-  })
+    props.nftMarks()
+    category()
+  });
+
 
   onMount(() => {
     isConnected();
@@ -44,7 +47,7 @@ const Home: Component = () => {
       <div class="px-6 relative">
         <Select value={category} setValue={setCategory} name="Category" options={categories} />
         <div class="mt-2">
-          <BookmarkList bookmarks={nftMarks()} />
+          <BookmarkList category={props.category()} bookmarks={props.nftMarks()} />
         </div>
       </div>
     </Show>

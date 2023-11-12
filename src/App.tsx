@@ -6,7 +6,6 @@ import Settings from "./components/views/settings/settings";
 import Home from "./components/views/home";
 import { Router, Route, Routes } from "@solidjs/router";
 import { StoreProvider } from "./store";
-import useTheme from "./use/useTheme/useTheme";
 import Networks from "./components/views/settings/networks";
 import AddNftMark from "./components/views/add-nftmark";
 
@@ -21,10 +20,10 @@ const App: Component = () => {
           >
             <Header />
             <Routes>
-              <Route path="/" component={Home}></Route>
-              <Route path="/account" component={Settings}></Route>
-              <Route path="/account/networks" component={Networks}></Route>
-              <Route path="/add-nft-mark" component={AddNftMark}></Route>
+              <Route path="/" component={Home}/>
+              <Route path="/account" component={Settings}/>
+              <Route path="/account/networks" component={Networks}/>
+              <Route path="/add-nft-mark" component={AddNftMark}/>
             </Routes>
             <div class="fixed bottom-0" style={{ width: "inherit" }}>
               <Footer />
