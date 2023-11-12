@@ -14,7 +14,6 @@ const Home: Component = () => {
   const categories = [{ label: 'Kinky', value: 'Kinky' }, { label: 'Default', value: 'Default' }];
   const props = useContent();
   const { setConnected, connected } = useSettings();
-  const { category, setCategory } = useContent()
 
 
   const isConnected = async () => {
@@ -33,7 +32,7 @@ const Home: Component = () => {
 
   createEffect(() => { 
     props.nftMarks()
-    category()
+    props.category()
   });
 
 
@@ -45,7 +44,7 @@ const Home: Component = () => {
   return (
     <Show when={connected()} fallback={<Login connected={connected} setConnected={setConnected} />}>
       <div class="px-6 relative">
-        <Select value={category} setValue={setCategory} name="Category" options={categories} />
+        <Select value={props.category} setValue={props.setCategory} name="Category" options={categories} />
         <div class="mt-2">
           <BookmarkList category={props.category()} bookmarks={props.nftMarks()} />
         </div>
