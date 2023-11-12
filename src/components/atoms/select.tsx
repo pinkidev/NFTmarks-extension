@@ -39,7 +39,7 @@ const Select: Component<SelectProps> = ({ options, name, value, setValue }) => {
   return (
     <>
       <div onClick={() => setShowChoices(showChoices() ? false : true)} class="relative mt-2 border-textLight dark:border-textDark text-textLight dark:text-textDark border-2 p-2 flex justify-center rounded-md cursor-pointer">
-        {!value ? 'Category' : value()}
+        {!value() ? 'Category' : value()}
         <RiArrowsArrowDropDownFill size={30} class="absolute right-2 top-1/2 -translate-y-1/2 z-0" />
       </div>
       {showChoices() ? choicesMap : false}
