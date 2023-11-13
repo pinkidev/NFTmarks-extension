@@ -1,4 +1,4 @@
-import { Component, createEffect, Show, onMount } from "solid-js";
+import { Component, createEffect, Show, onMount, createSignal } from "solid-js";
 import { RowList } from "../organisms/row-list";
 import Select from "../atoms/select";
 import useContent from "../../actions/content-actions/content-actions";
@@ -16,6 +16,7 @@ const Home: Component = () => {
   const categories = [{ label: 'Kinky', value: 'Kinky' }, { label: 'Default', value: 'Default' }];
   const props = useContent();
   const { setConnected, connected } = useSettings();
+  const [view, setView] = createSignal('categories')
 
 
   const isConnected = async () => {
@@ -50,6 +51,12 @@ const Home: Component = () => {
   return (
     <Show when={connected()} fallback={<Login connected={connected} setConnected={setConnected} />}>
       <div class="px-6 relative">
+        <div class="w-full p-1 flex">
+          <div onClick={() => setView('categories')}
+            class={`w-1/2 mx-1 ${view() === 'categories' ? 'border-b-4' : ''} cursor-pointer border-b-primaryButtonLight dark:border-b-primaryButtonDark rounded-b-md dark:text-textDark text-textLight flex justify-center`}>Categories</div>
+          <div onClick={() => setView('collections')}
+            class={`w-1/2 mx-1 ${view() === 'collections' ? 'border-b-4' : ''} cursor-pointer border-b-primaryButtonLight dark:border-b-primaryButtonDark rounded-b-md dark:text-textDark text-textLight flex justify-center`}>Collections</div>
+        </div>
         <Show when={!props.loading().bookmarks} fallback={<Loader />}>
           <Select value={props.category} setValue={props.setCategory} name="Category" options={categories} />
           <div class="mt-2">
