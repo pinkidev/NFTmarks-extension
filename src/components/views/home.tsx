@@ -6,7 +6,7 @@ import Login from "./login";
 import { ethers } from 'ethers';
 import useSettings from "../../use/useSettings/useSettings";
 import nftmarksApi from "../../api/nftmarks-api";
-
+import Loader from "../atoms/loader/loader";
 
 const provider = new ethers.BrowserProvider((window as any).ethereum);
 
@@ -25,12 +25,14 @@ const Home: Component = () => {
     }
   }
   const getUserNftMarks = async () => {
+    props.setLoading('nftMarks', true);
     const marks = await nftmarksApi.getNftMarksByUser('652d5eb3d7e492b02c050f70');
-    const parsedMarks = marks.map((mark:string) => JSON.parse(mark));
+    props.setLoading('nftMarks', false);
+    const parsedMarks = marks.map((mark: string) => JSON.parse(mark));
     props.setMarks(parsedMarks)
   }
 
-  createEffect(() => { 
+  createEffect(() => {
     props.nftMarks()
     props.category()
   });
@@ -40,14 +42,16 @@ const Home: Component = () => {
     isConnected();
     getUserNftMarks();
   })
-  
+
   return (
     <Show when={connected()} fallback={<Login connected={connected} setConnected={setConnected} />}>
       <div class="px-6 relative">
-        <Select value={props.category} setValue={props.setCategory} name="Category" options={categories} />
-        <div class="mt-2">
-          <BookmarkList category={props.category()} bookmarks={props.nftMarks()} />
-        </div>
+        <Show when={!props.loading().nftMarks} fallback={<Loader />}>
+          <Select value={props.category} setValue={props.setCategory} name="Category" options={categories} />
+          <div class="mt-2">
+            <BookmarkList category={props.category()} bookmarks={props.nftMarks()} />
+          </div>
+        </Show>
       </div>
     </Show>
 

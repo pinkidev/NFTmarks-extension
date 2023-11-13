@@ -11,9 +11,10 @@ interface SelectProps {
   name: string,
   value: Accessor<string>,
   setValue: (value: string) => void
+  color?: string
 }
 
-const Select: Component<SelectProps> = ({ options, name, value, setValue }) => {
+const Select: Component<SelectProps> = ({ options, name, value, setValue, color }) => {
 
   const [showChoices, setShowChoices] = createSignal(false);
 
@@ -29,7 +30,7 @@ const Select: Component<SelectProps> = ({ options, name, value, setValue }) => {
   }
 
   let choicesMap =
-    <div class="absolute flex-col h-4/5 overflow-auto w-10/12 px-3 ml-2 pb-3 mt-2 rounded-md dark:bg-secondaryDark bg-secondaryLight border-textLight dark:border-textDark text-textLight dark:text-textDark border-2">
+    <div style={{height: 'calc(100vh - 200px)'}} class="absolute flex-col overflow-auto w-10/12 px-3 ml-2 pb-3 mt-2 rounded-md dark:bg-secondaryDark bg-secondaryLight border-textLight dark:border-textDark text-textLight dark:text-textDark border-2">
       {options.map((choice) => {
         return ChoiceElement(choice.value, choice.label)
       })}

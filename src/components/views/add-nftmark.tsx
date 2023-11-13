@@ -13,7 +13,7 @@ const AddNftMark: Component<{}> = () => {
   const [category, setCategory] = createSignal('Category');
 
   const createNftMark = () => {
-    addMark({ NAME: name(),URL: nftMark(), CATEGORY: category(), USERID: '652d5eb3d7e492b02c050f70' });
+    addMark({ NAME: name(),URL: nftMark(), CATEGORY: category() === 'Category' ? 'Default' : category(), USERID: '652d5eb3d7e492b02c050f70' });
     navigate('/')
   }
 

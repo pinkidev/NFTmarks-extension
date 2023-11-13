@@ -4,8 +4,9 @@ import { TbCurrencyDollar } from "solid-icons/tb";
 import { IoChevronBack } from 'solid-icons/io'
 import { A, useLocation } from "@solidjs/router";
 import { createEffect, on } from "solid-js";
+import { RiFinanceExchangeDollarLine } from 'solid-icons/ri'
 
-interface IHeaderProps {}
+interface IHeaderProps { }
 
 const Header = () => {
   const location = useLocation()
@@ -13,7 +14,7 @@ const Header = () => {
   // able to listen to url changes
   createEffect(on(
     () => location.pathname,
-    () => {}
+    () => { }
   ));
 
 
@@ -23,20 +24,24 @@ const Header = () => {
         <TbCurrencyDollar size="28" />
       </div>
       <div class="cursor-pointer">
+        <RiFinanceExchangeDollarLine size="28" />
+      </div>
+
+      <div class="cursor-pointer">
         {location.pathname.includes('/account/') ?
-            <A href="/account">
-            <IoChevronBack size="25"  />
-          </A>
-         : location.pathname === "/" ? (
           <A href="/account">
-            <FaSolidUserAstronaut size="25" class="fill-textLight dark:fill-textDark"/>
+            <IoChevronBack size="25" />
           </A>
-        ) : 
-        (
-          <A href="/">
-            <RiMapSpaceShipLine size="25"  />
-          </A>
-        )}
+          : location.pathname === "/" ? (
+            <A href="/account">
+              <FaSolidUserAstronaut size="25" class="fill-textLight dark:fill-textDark" />
+            </A>
+          ) :
+            (
+              <A href="/">
+                <RiMapSpaceShipLine size="25" />
+              </A>
+            )}
       </div>
     </div>
   );

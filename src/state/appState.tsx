@@ -29,7 +29,10 @@ const [state, setState] = createStore({
   theme,
   nftMarks,
   category,
-  blockchain
+  blockchain,
+  loading: {
+    nftMarks: null
+  }
 });
 
 export const useAppState = () => {
@@ -51,14 +54,18 @@ export const useAppState = () => {
     })
   }
 
+  const setLoading = (type: string, bool: Boolean) => {
+    return { ...state, loading: { [type]: bool } }
+  }
+
   const addMark = async (nftMark: Bookmark) => {
     try {
       const response = await nftMarksApi.addNftMark(nftMark);
-    } catch(err) {
+    } catch (err) {
 
     }
     setState(() => {
-      return {...state, nftMarks: [nftMark, ...state.nftMarks]}
+      return { ...state, nftMarks: [nftMark, ...state.nftMarks] }
     })
   }
 
@@ -71,7 +78,7 @@ export const useAppState = () => {
   const setConnected = (connected: boolean) => {
     setState(() => {
       return {
-        ...state, blockchain: {...state.blockchain, connected}
+        ...state, blockchain: { ...state.blockchain, connected }
       }
     })
   }
@@ -79,10 +86,10 @@ export const useAppState = () => {
   const setBlockchain = (chain: string) => {
     setState(() => {
       return {
-        ...state, blockchain: {...state.blockchain, chain }
+        ...state, blockchain: { ...state.blockchain, chain }
       }
     })
   }
 
-  return { state, setTheme, setMarks, setCategory, setConnected, setBlockchain, addMark };
+  return { state, setTheme, setMarks, setLoading, setCategory, setConnected, setBlockchain, addMark };
 };
