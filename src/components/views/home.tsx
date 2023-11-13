@@ -1,13 +1,14 @@
 import { Component, createEffect, Show, onMount } from "solid-js";
 import { RowList } from "../organisms/row-list";
 import Select from "../atoms/select";
-import useContent from "../../use/useContent/useContent";
+import useContent from "../../actions/content-actions/content-actions";
 import Login from "./login";
 import { ethers } from 'ethers';
-import useSettings from "../../use/useSettings/useSettings";
+import useSettings from "../../actions/settings-actions/settings-actions";
 import bookmarksApi from "../../api/bookmarks-api";
 import Loader from "../atoms/loader/loader";
 import { BookmarkRow } from "../molecules/bookmark-row";
+import { TbFaceIdError } from 'solid-icons/tb'
 
 const provider = new ethers.BrowserProvider((window as any).ethereum);
 
@@ -26,11 +27,13 @@ const Home: Component = () => {
     }
   }
   const getUserBookmarks = async () => {
-    props.setLoading('bookmarks', true);
-    const marks = await bookmarksApi.getBookmarksByUser('652d5eb3d7e492b02c050f70');
-    props.setLoading('bookmarks', false);
-    const parsedMarks = marks.map((mark: string) => JSON.parse(mark));
-    props.setBookmarks(parsedMarks)
+    if (props.bookmarks().length === 0) {
+      props.setLoading('bookmarks', true);
+      const marks = await bookmarksApi.getBookmarksByUser('652d5eb3d7e492b02c050f70');
+      props.setLoading('bookmarks', false);
+      const parsedMarks = marks.map((mark: string) => JSON.parse(mark));
+      props.setBookmarks(parsedMarks)
+    }
   }
 
   createEffect(() => {

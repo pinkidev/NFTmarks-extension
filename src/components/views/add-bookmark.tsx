@@ -2,7 +2,7 @@ import { Component, createSignal } from "solid-js";
 import { useNavigate } from "@solidjs/router";
 import Select from "../atoms/select";
 import Input from '../atoms/input';
-import useContent from "../../use/useContent/useContent";
+import useContent from "../../actions/content-actions/content-actions";
 
 const AddNftMark: Component<{}> = () => {
   const categories = [{label: 'Kinky', value: 'kinky'}, {label: 'Default', value: 'default'}];

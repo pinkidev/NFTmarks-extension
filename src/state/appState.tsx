@@ -32,6 +32,10 @@ const [state, setState] = createStore({
   bookmarks,
   category,
   blockchain,
+  failed: {
+    nftmarks: null,
+    bookmarks: null
+  },
   loading: {
     nftmarks: null,
     bookmarks: null
@@ -51,48 +55,7 @@ export const useAppState = () => {
     });
   };
 
-  const setBookmarks = (bookmarks: Bookmark[]) => {
-    setState(() => {
-      return { ...state, bookmarks }
-    })
-  }
 
-  const setNftmarks = (nftmarks: Nftmark[]) => {
-    setState(() => {
-      return { ...state, nftmarks }
-    })
-  }
-
-  const setLoading = (type: string, bool: Boolean) => {
-    setState(() => {
-      return { ...state, loading: {...state.loading, [type]: bool } }    
-    })
-  }
- 
-  const addBookmark = async (bookmark: Bookmark) => {
-    try {
-      const response = await nftMarksApi.addBookmark(bookmark);
-    } catch (err) {
-
-    }
-    setState(() => {
-      return { ...state, nftMarks: [bookmark, ...state.bookmarks] }
-    })
-  }
-
-  const setCategory = (category: string) => {
-    setState(() => {
-      return { ...state, category }
-    })
-  }
-
-  const setConnected = (connected: boolean) => {
-    setState(() => {
-      return {
-        ...state, blockchain: { ...state.blockchain, connected }
-      }
-    })
-  }
 
   const setBlockchain = (chain: string) => {
     setState(() => {
@@ -102,5 +65,5 @@ export const useAppState = () => {
     })
   }
 
-  return { state, setTheme, setBookmarks, setNftmarks, setLoading, setCategory, setConnected, setBlockchain, addBookmark };
+  return { state, setState, setTheme, setBlockchain };
 };
