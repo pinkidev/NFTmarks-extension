@@ -26,11 +26,11 @@ const Select: Component<SelectProps> = ({ options, name, value, setValue, color 
 
   let ChoiceElement = (value: string, label: string) => {
     return <div onClick={() => makeChoice(value)}
-      class="hover:bg-primaryLight dark:hover:bg-primaryDark cursor-pointer rounded-md dark:border-textDark text-textLight dark:text-textDark border-textLight border-2 px-2 py-1 mt-2 w-full">{label}</div>
+      class="hover:bg-primaryLight select-none dark:hover:bg-primaryDark cursor-pointer rounded-md dark:border-textDark text-textLight dark:text-textDark border-textLight border-2 px-2 py-1 mt-2 w-full">{label}</div>
   }
 
   let choicesMap =
-    <div style={{height: 'calc(100vh - 200px)'}} class="absolute flex-col overflow-auto w-10/12 px-3 ml-2 pb-3 mt-2 rounded-md dark:bg-secondaryDark bg-secondaryLight border-textLight dark:border-textDark text-textLight dark:text-textDark border-2">
+    <div style={{height: 'calc(100vh - 200px)', 'z-index': 50}} class="absolute flex-col overflow-auto w-10/12 px-3 ml-2 pb-3 mt-2 rounded-md dark:bg-secondaryDark bg-secondaryLight border-textLight dark:border-textDark text-textLight dark:text-textDark border-2">
       {options.map((choice) => {
         return ChoiceElement(choice.value, choice.label)
       })}
@@ -39,7 +39,7 @@ const Select: Component<SelectProps> = ({ options, name, value, setValue, color 
 
   return (
     <>
-      <div onClick={() => setShowChoices(showChoices() ? false : true)} class="relative mt-2 border-textLight dark:border-textDark text-textLight dark:text-textDark border-2 p-2 flex justify-center rounded-md cursor-pointer">
+      <div onClick={() => setShowChoices(showChoices() ? false : true)} class="select-none relative mt-2 border-textLight dark:border-textDark text-textLight dark:text-textDark border-2 p-2 flex justify-center rounded-md cursor-pointer">
         {!value() ? 'Category' : value()}
         <RiArrowsArrowDropDownFill size={30} class="absolute right-2 top-1/2 -translate-y-1/2 z-0" />
       </div>

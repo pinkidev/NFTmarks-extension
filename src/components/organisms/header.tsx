@@ -4,8 +4,7 @@ import { TbCurrencyDollar } from "solid-icons/tb";
 import { IoChevronBack } from 'solid-icons/io'
 import { A, useLocation } from "@solidjs/router";
 import { createEffect, on } from "solid-js";
-import { RiFinanceExchangeDollarLine } from 'solid-icons/ri'
-
+import { BiRegularStoreAlt } from 'solid-icons/bi'
 interface IHeaderProps { }
 
 const Header = () => {
@@ -23,8 +22,10 @@ const Header = () => {
       <div class="cursor-pointer">
         <TbCurrencyDollar size="28" />
       </div>
-      <div class="cursor-pointer">
-        <RiFinanceExchangeDollarLine size="28" />
+      <div class="cursor-pointer ">
+        <A href="/market">
+          <BiRegularStoreAlt size="32" class="fill-primaryButtonLight dark:fill-primaryButtonDark" />
+        </A>
       </div>
 
       <div class="cursor-pointer">

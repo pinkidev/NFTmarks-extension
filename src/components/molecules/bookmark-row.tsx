@@ -9,7 +9,7 @@ export const BookmarkRow: Component<Bookmark> = (props) => {
   const [dropdown, setDropdown] = createSignal(false);
 
   return (
-    <div class="py-2 mt-2 px-2 font-bold border-solid border-2 fill-textLight dark:fill-textDark border-textLight dark:border-textDark text-textLight dark:text-textDark rounded-md">
+    <div class=" py-2 mt-2 px-2 font-bold border-solid border-2 fill-textLight dark:fill-textDark border-textLight dark:border-textDark text-textLight dark:text-textDark rounded-md">
       <div class="flex justify-between items-center">
         <div class="">{props.NAME}</div>
         <div class="flex items-center">
@@ -31,7 +31,7 @@ export const BookmarkRow: Component<Bookmark> = (props) => {
       {dropdown() ? 
       <div class="dropdown flex justify-between items-center mt-1 fill-primaryButtonLight dark:fill-primaryButtonDark">
         <div class="text-primaryButtonLight dark:text-primaryButtonDark">{props.URL}</div>
-        <BiSolidMagicWand class="cursor-pointer mr-1" size="20" />
+        {/* <BiSolidMagicWand class="cursor-pointer mr-1" size="20" /> */}
       </div> : false}
     </div>
   );

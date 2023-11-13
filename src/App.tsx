@@ -7,7 +7,8 @@ import Home from "./components/views/home";
 import { Router, Route, Routes } from "@solidjs/router";
 import { StoreProvider } from "./store";
 import Networks from "./components/views/settings/networks";
-import AddNftMark from "./components/views/add-nftmark";
+import AddNftMark from "./components/views/add-bookmark";
+import Market from "./components/views/market";
 
 const App: Component = () => {
   return (
@@ -24,6 +25,8 @@ const App: Component = () => {
               <Route path="/account" component={Settings}/>
               <Route path="/account/networks" component={Networks}/>
               <Route path="/add-nft-mark" component={AddNftMark}/>
+              <Route path="/market" component={Market}/>
+
             </Routes>
             <div class="fixed bottom-0" style={{ width: "inherit" }}>
               <Footer />

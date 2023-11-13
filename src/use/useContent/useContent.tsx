@@ -3,12 +3,16 @@ import { useSelector } from "../../store";
 const useContent = () => {
   const { app } = useSelector();
   const appState = () => app.state;
-  const nftMarks = () => app.state.nftMarks;
+  const nftmarks = () => app.state.nftmarks;
   const category = () => app.state.category
-  const loading = () => app.state.loading
-  const setMarks = app.setMarks;
-  const addMark = app.addMark;
-  const setCategory = app.setCategory
+  const bookmarks = () => app.state.bookmarks;
+  const loading = () => app.state.loading;
+
+
+  const setNftmarks = app.setNftmarks;
+  const setBookmarks = app.setBookmarks;
+  const addBookmark = app.addBookmark;
+  const setCategory = app.setCategory;
   const setLoading = app.setLoading;
 
 
@@ -16,10 +20,12 @@ const useContent = () => {
     category,
     setCategory,
     appState,
-    nftMarks,
-    setMarks,
-    addMark,
+    nftmarks,
+    setBookmarks,
+    setNftmarks,
+    addBookmark,
     setLoading,
+    bookmarks,
     loading
   };
 };

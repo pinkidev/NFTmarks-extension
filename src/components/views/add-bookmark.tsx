@@ -7,13 +7,13 @@ import useContent from "../../use/useContent/useContent";
 const AddNftMark: Component<{}> = () => {
   const categories = [{label: 'Kinky', value: 'kinky'}, {label: 'Default', value: 'default'}];
   const navigate = useNavigate();
-  const { addMark } = useContent();
+  const { addBookmark } = useContent();
   const [name, setName] = createSignal('');
   const [nftMark, setNftMark] = createSignal('');
   const [category, setCategory] = createSignal('Category');
 
   const createNftMark = () => {
-    addMark({ NAME: name(),URL: nftMark(), CATEGORY: category() === 'Category' ? 'Default' : category(), USERID: '652d5eb3d7e492b02c050f70' });
+    addBookmark({ NAME: name(),URL: nftMark(), CATEGORY: category() === 'Category' ? 'Default' : category(), USERID: '652d5eb3d7e492b02c050f70' });
     navigate('/')
   }
 

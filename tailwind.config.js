@@ -17,6 +17,7 @@ module.exports = {
         secondaryButtonLight: 'rgb(196 181 253)',
         secondaryButtonDark: 'rgb(79 70 229)',
         primaryButtonDark: 'rgb(99 102 241)',
+        thirdButton: 'rgb(94 234 212)'
         // ...
       }
     },

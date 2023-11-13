@@ -1,6 +1,6 @@
 import { createStore } from "solid-js/store";
-import { Bookmark } from '../components/molecules/types';
-import nftMarksApi from "../api/nftmarks-api";
+import { Bookmark, Nftmark } from '../components/molecules/types';
+import nftMarksApi from "../api/bookmarks-api";
 let theme: boolean = true;
 
 if ("theme" in localStorage) {
@@ -18,7 +18,8 @@ interface Blockchain {
   chain: string
 }
 
-let nftMarks: Bookmark[] = [];
+let nftmarks: Nftmark[] = [];
+let bookmarks: Bookmark[] = [];
 let category: string = 'Default';
 let blockchain: Blockchain = {
   connected: false,
@@ -27,11 +28,13 @@ let blockchain: Blockchain = {
 
 const [state, setState] = createStore({
   theme,
-  nftMarks,
+  nftmarks,
+  bookmarks,
   category,
   blockchain,
   loading: {
-    nftMarks: null
+    nftmarks: null,
+    bookmarks: null
   }
 });
 
@@ -48,24 +51,32 @@ export const useAppState = () => {
     });
   };
 
-  const setMarks = (nftMarks: Bookmark[]) => {
+  const setBookmarks = (bookmarks: Bookmark[]) => {
     setState(() => {
-      return { ...state, nftMarks }
+      return { ...state, bookmarks }
+    })
+  }
+
+  const setNftmarks = (nftmarks: Nftmark[]) => {
+    setState(() => {
+      return { ...state, nftmarks }
     })
   }
 
   const setLoading = (type: string, bool: Boolean) => {
-    return { ...state, loading: { [type]: bool } }
+    setState(() => {
+      return { ...state, loading: {...state.loading, [type]: bool } }    
+    })
   }
-
-  const addMark = async (nftMark: Bookmark) => {
+ 
+  const addBookmark = async (bookmark: Bookmark) => {
     try {
-      const response = await nftMarksApi.addNftMark(nftMark);
+      const response = await nftMarksApi.addBookmark(bookmark);
     } catch (err) {
 
     }
     setState(() => {
-      return { ...state, nftMarks: [nftMark, ...state.nftMarks] }
+      return { ...state, nftMarks: [bookmark, ...state.bookmarks] }
     })
   }
 
@@ -91,5 +102,5 @@ export const useAppState = () => {
     })
   }
 
-  return { state, setTheme, setMarks, setLoading, setCategory, setConnected, setBlockchain, addMark };
+  return { state, setTheme, setBookmarks, setNftmarks, setLoading, setCategory, setConnected, setBlockchain, addBookmark };
 };

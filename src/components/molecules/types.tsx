@@ -5,5 +5,13 @@ export interface Bookmark {
   ID?: string,
   CATEGORY: string
   USERID: string,
-  CHAIN_ADDR?: string
+}
+
+export interface Nftmark {
+  NAME: string
+  BOOKMARKS: string
+  ID?: string,
+  CATEGORY: string
+  USERID: string,
+  CHAIN_ADDR: string
 }
