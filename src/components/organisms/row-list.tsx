@@ -8,11 +8,10 @@ export const RowList: Component<ListProps> = (props) => {
       {props.filter && props.filterKey ?
         <For each={props.list}>
           {(row) => {
-            let filterKey = props.filterKey ? props.filterKey : '';
-            let filter = props.filter ? props.filter : '';
-            return  ( <Show when={row[filterKey].toLowerCase() === filter.toLowerCase()}>
-            <props.RowComponent {...row} />
-          </Show>)
+            // @ts-ignore: Unreachable code error
+            return (<Show when={row[props.filterKey].toLowerCase() === props.filter.toLowerCase()}>
+              <props.RowComponent {...row} />
+            </Show>)
           }
           }
         </For>

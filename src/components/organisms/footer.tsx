@@ -16,7 +16,7 @@ const Footer = () => {
   return (
     <div class="flex justify-center w-full p-4 items-center dark:bg-primaryDark bg-primaryLight">
       <div class="cursor-pointer text-textLight dark:text-textDark">
-        {location.pathname.includes('/add-nft-mark') ?
+        {location.pathname !== '/' ?
           <A href="/">
             <IoChevronUp size="28" class="text-primaryButtonLight dark:text-primaryButtonDark" />
           </A> :

@@ -13,6 +13,7 @@ const useContent = () => {
   const marksView = () => app.state.marksView;
   const collection = () => app.state.collection;
   const collections = () => app.state.collections;
+  const markToMint = () => app.state.markToMint;
 
   const setLoading = (type: string, bool: Boolean) => {
     setState(() => {
@@ -76,6 +77,12 @@ const useContent = () => {
     })
   }
 
+  const setMarkToMint = (nftmark: Nftmark) => {
+    setState(() => {
+      return {...app.state, markToMint: nftmark}
+    })
+  }
+
   // const setLoading = app.setLoading;
 
 
@@ -94,7 +101,8 @@ const useContent = () => {
     collection,
     collections,
     setCollection,
-    setCollections
+    setCollections,
+    setMarkToMint
   };
 };
 

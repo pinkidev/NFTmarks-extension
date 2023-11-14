@@ -10,10 +10,10 @@ export interface Bookmark {
 }
 
 export interface Nftmark {
-  NAME: string
-  BOOKMARKS: string
+  NAME?: string
+  BOOKMARKS: Bookmark[]
   ID?: string,
   CATEGORY: string
-  USERID: string,
-  CHAIN_ADDR: string
+  USERID?: string,
+  CHAIN_ADDR?: string
 }

@@ -29,10 +29,10 @@ const AddNftMark: Component<{}> = () => {
         : <Select value={props.collection()} setValue={props.setCollection} name="Collection" options={collections} />
       }
       <div class="mt-4">
-        <Input value={name} name="NFTmarkName" placeholder="NFT Mark Name" setValue={setName} />
+        <Input value={name} name="NFTmarkName" placeholder="Bookmark Name" setValue={setName} />
       </div>
       <div class="mt-4">
-        <Input value={nftMark} name="NFTmarkName" placeholder="NFT Mark" setValue={setNftMark} />
+        <Input value={nftMark} name="NFTmarkName" placeholder="Bookmark" setValue={setNftMark} />
       </div>
       <div class="mt-4">
         <button id="nft-mark" class={`dark:border-textDark 

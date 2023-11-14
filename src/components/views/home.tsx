@@ -9,13 +9,17 @@ import bookmarksApi from "../../api/bookmarks-api";
 import Loader from "../atoms/loader/loader";
 import { BookmarkRow } from "../molecules/bookmark-row";
 import { TbFaceIdError } from 'solid-icons/tb'
+import { BiSolidMagicWand } from 'solid-icons/bi'
 import { Bookmark } from "../molecules/types";
+import { useNavigate } from "@solidjs/router";
+
 
 const provider = new ethers.BrowserProvider((window as any).ethereum);
 
 const Home: Component = () => {
   const categories = [{ label: 'Kinky', value: 'Kinky' }, { label: 'Default', value: 'Default' }];
   const collections = [{ label: 'NFT Research 2023', value: 'NFT Research 2023' }, { label: 'Inception', value: 'Inception' }];
+  const navigate = useNavigate();
 
   const props = useContent();
   const { setConnected, connected } = useSettings();
@@ -49,6 +53,18 @@ const Home: Component = () => {
     getUserBookmarks();
   })
 
+  const setMarkToMintAndNavToMintPage = () => {
+    const collection = props.bookmarks().filter((bk) => {
+      return bk.IS_COLLECTION && bk.COLLECTION === props.collection();
+    });
+    const nftmark = {
+      BOOKMARKS: collection,
+      CATEGORY: props.collection()
+    }
+    props.setMarkToMint(nftmark);
+    navigate('/mint')
+  }
+
   return (
     <Show when={connected()} fallback={<Login connected={connected} setConnected={setConnected} />}>
       <div class="px-6 relative">
@@ -66,7 +82,10 @@ const Home: Component = () => {
             </div>
           </> :
             <>
-              <Select value={props.collection()} setValue={props.setCollection} name="Collection" options={collections} />
+              <div class="flex items-center">
+                <div class="w-10/12"><Select value={props.collection()} setValue={props.setCollection} name="Collection" options={collections} /></div>
+                <div onClick={setMarkToMintAndNavToMintPage} class="w-2/12 flex items-center mt-1 justify-center cursor-pointer hover:animate-spin"><BiSolidMagicWand size="30" class="fill-primaryButtonLight dark:fill-primaryButtonDark" /></div>
+              </div>
               <div class="mt-2">
                 <RowList filterKey="COLLECTION" RowComponent={BookmarkRow} filter={props.collection()} list={props.collections()} />
               </div>

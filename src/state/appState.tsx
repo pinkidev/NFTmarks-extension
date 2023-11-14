@@ -44,7 +44,8 @@ const [state, setState] = createStore({
     nftmarks: null,
     bookmarks: null
   },
-  marksView: 'categories'
+  marksView: 'categories',
+  markToMint: {}
 });
 
 export const useAppState = () => {
@@ -59,8 +60,6 @@ export const useAppState = () => {
       return { ...state, theme };
     });
   };
-
-
 
   const setBlockchain = (chain: string) => {
     setState(() => {

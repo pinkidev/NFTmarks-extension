@@ -9,6 +9,7 @@ import { StoreProvider } from "./store";
 import Networks from "./components/views/settings/networks";
 import AddNftMark from "./components/views/add-bookmark";
 import Market from "./components/views/market";
+import Mint from "./components/views/mint";
 
 const App: Component = () => {
   return (
@@ -26,6 +27,8 @@ const App: Component = () => {
               <Route path="/account/networks" component={Networks}/>
               <Route path="/add-nft-mark" component={AddNftMark}/>
               <Route path="/market" component={Market}/>
+              <Route path="/mint" component={Mint}/>
+
 
             </Routes>
             <div class="fixed bottom-0" style={{ width: "inherit" }}>
