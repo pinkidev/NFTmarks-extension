@@ -20,7 +20,9 @@ interface Blockchain {
 
 let nftmarks: Nftmark[] = [];
 let bookmarks: Bookmark[] = [];
+let collections: Bookmark[] = [];
 let category: string = 'Default';
+let collection: string = 'Inception';
 let blockchain: Blockchain = {
   connected: false,
   chain: 'ethereum'
@@ -30,7 +32,9 @@ const [state, setState] = createStore({
   theme,
   nftmarks,
   bookmarks,
+  collections,
   category,
+  collection,
   blockchain,
   failed: {
     nftmarks: null,
@@ -39,7 +43,8 @@ const [state, setState] = createStore({
   loading: {
     nftmarks: null,
     bookmarks: null
-  }
+  },
+  marksView: 'categories'
 });
 
 export const useAppState = () => {

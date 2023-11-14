@@ -1,6 +1,5 @@
 import { Component, createSignal } from "solid-js";
 import { RiArrowsArrowDropDownFill } from "solid-icons/ri";
-import type { Signal, Accessor, Setter } from 'solid-js';
 
 interface Choice {
   label: string,
@@ -9,17 +8,17 @@ interface Choice {
 interface SelectProps {
   options: Choice[],
   name: string,
-  value: Accessor<string>,
+  value: string,
   setValue: (value: string) => void
   color?: string
 }
 
-const Select: Component<SelectProps> = ({ options, name, value, setValue, color }) => {
+const Select: Component<SelectProps> = (props) => {
 
   const [showChoices, setShowChoices] = createSignal(false);
 
   const makeChoice = (value: string) => {
-    setValue(value)
+    props.setValue(value)
     setShowChoices(false);
   }
 
@@ -30,8 +29,8 @@ const Select: Component<SelectProps> = ({ options, name, value, setValue, color 
   }
 
   let choicesMap =
-    <div style={{height: 'calc(100vh - 200px)', 'z-index': 50}} class="absolute flex-col overflow-auto w-10/12 px-3 ml-2 pb-3 mt-2 rounded-md dark:bg-secondaryDark bg-secondaryLight border-textLight dark:border-textDark text-textLight dark:text-textDark border-2">
-      {options.map((choice) => {
+    <div style={{ height: 'calc(100vh - 230px)', 'z-index': 50 }} class="absolute flex-col overflow-auto w-10/12 px-3 ml-2 pb-3 mt-2 rounded-md dark:bg-secondaryDark bg-secondaryLight border-textLight dark:border-textDark text-textLight dark:text-textDark border-2">
+      {props.options.map((choice: any) => {
         return ChoiceElement(choice.value, choice.label)
       })}
     </div>
@@ -40,7 +39,7 @@ const Select: Component<SelectProps> = ({ options, name, value, setValue, color 
   return (
     <>
       <div onClick={() => setShowChoices(showChoices() ? false : true)} class="select-none relative mt-2 border-textLight dark:border-textDark text-textLight dark:text-textDark border-2 p-2 flex justify-center rounded-md cursor-pointer">
-        {!value() ? 'Category' : value()}
+        {!props.value ? 'Category' : props.value}
         <RiArrowsArrowDropDownFill size={30} class="absolute right-2 top-1/2 -translate-y-1/2 z-0" />
       </div>
       {showChoices() ? choicesMap : false}

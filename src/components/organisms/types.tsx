@@ -1,6 +1,7 @@
 
 export interface ListProps {
   list: any[]
-  category:string,
   RowComponent: any
+  filter?: string
+  filterKey?: string
 };
