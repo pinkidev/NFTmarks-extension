@@ -51,3 +51,6 @@ select {
   -moz-appearance: none;
   
 }
+.tooltip-arrow {
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
