@@ -21,21 +21,21 @@ const Header = () => {
       </div>
       <div class="cursor-pointer ">
         {location.pathname.includes('/market') ?
-          <A href="/">
-            <RiMapSpaceShipLine size="32" class="text-primaryButtonLight dark:text-primaryButtonDark" />
+          <A href="/" title="My Bookmarks">
+            <RiMapSpaceShipLine  size="32" class="text-primaryButtonLight dark:text-primaryButtonDark" />
           </A> :
-          <A href="/market">
+          <A href="/market" title="NFTmarks Marketplace">
             <BiRegularStoreAlt size="32" class="fill-primaryButtonLight dark:fill-primaryButtonDark text-primaryButtonLight dark:text-primaryButtonDark" />
           </A>}
       </div>
 
       <div class="cursor-pointer">
         {location.pathname.includes('/account') ?
-          <A href="/">
-            <IoChevronBack size="23" />
+          <A href="/" title="Back">
+            <IoChevronBack  size="23" />
           </A>
           : (
-            <A href="/account">
+            <A href="/account" title="Settings" >
               <FaSolidUserAstronaut size="23" class="fill-textLight dark:fill-textDark" />
             </A>
           )}

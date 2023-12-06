@@ -49,10 +49,9 @@ const Mint: Component<{}> = (props) => {
         </div>
       }
       <div class="relative">
-        <button id="nft-mark" class={`dark:border-textDark 
+        <button id="nft-mark" title="Mint to NFT!" class={`dark:border-textDark 
     dark:bg-primaryButtonDark bg-primaryButtonLight p-2 mt-2 font-bold w-full items-center rounded-md text-center 
     hover:dark:bg-secondaryButtonDark hover:bg-secondaryButtonLight`} name="NFTmarkName" >Mint</button>
-        <Tooltip text="Mint Collection to NFT" direction="left" />
       </div>
 
 

@@ -20,7 +20,7 @@ const Footer = () => {
           <A href="/">
             <IoChevronUp size="28" class="text-primaryButtonLight dark:text-primaryButtonDark" />
           </A> :
-          <A href="/add-nft-mark">
+          <A href="/add-nft-mark" title="Add Bookmark" >
             <AiOutlinePlusCircle size="28" class="fill-primaryButtonLight dark:fill-primaryButtonDark" />
           </A>}
       </div>

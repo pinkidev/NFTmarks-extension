@@ -83,8 +83,11 @@ const Home: Component = () => {
           </> :
             <>
               <div class="flex items-center">
-                <div class="w-10/12"><Select value={props.collection()} setValue={props.setCollection} name="Collection" options={collections} /></div>
-                <div onClick={setMarkToMintAndNavToMintPage} class="w-2/12 flex items-center mt-1 justify-center cursor-pointer hover:animate-spin"><BiSolidMagicWand size="30" class="fill-primaryButtonLight dark:fill-primaryButtonDark" /></div>
+                <div class="w-10/12">
+                  <Select value={props.collection()} setValue={props.setCollection} name="Collection" options={collections} /></div>
+                <div title="Mint collection to NFT!" onClick={setMarkToMintAndNavToMintPage} class="w-2/12 flex items-center mt-1 justify-center cursor-pointer hover:animate-spin">
+                  <BiSolidMagicWand size="30" class="fill-primaryButtonLight dark:fill-primaryButtonDark" />
+                </div>
               </div>
               <div class="mt-2">
                 <RowList filterKey="COLLECTION" RowComponent={BookmarkRow} filter={props.collection()} list={props.collections()} />
